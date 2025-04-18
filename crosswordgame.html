@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Travel Trivia Game</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #e3f2fd;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .top-bar {
+      width: 100%;
+      padding: 20px;
+      background-color: #1565c0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home-button {
+      background-color: #ffffff;
+      color: #1565c0;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .home-button:hover {
+      background-color: #bbdefb;
+    }
+
+    .container {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1400px;
+      width: 100%;
+      padding: 40px 20px;
+    }
+
+    .photo-box {
+      flex: 1;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .question-container {
+      background: linear-gradient(to right, #64b5f6, #1976d2);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      flex: 2;
+      max-width: 650px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .question {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .options {
+      margin-bottom: 30px;
+    }
+
+    .options button {
+      background-color: #0d47a1;
+      color: #fff;
+      border: none;
+      padding: 14px 24px;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease;
+      width: 80%;
+    }
+
+    .options button:hover {
+      background-color: #1e88e5;
+    }
+
+    .feedback {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #388e3c;
+    }
+
+    .feedback.error {
+      color: #d32f2f;
+    }
+
+    .footer {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-top: 20px;
+    }
+
+    .footer p {
+      margin: 5px 0;
+    }
+
+    #progress-bar-container {
+      width: 80%;
+      height: 8px;
+      background-color: #b0bec5;
+      margin: 20px auto 0 auto;
+      border-radius: 10px;
+    }
+
+    #progress-bar {
+      height: 100%;
+      width: 0;
+      background-color: #1976d2;
+      border-radius: 10px;
+    }
+
+    button {
+      background-color: #1e88e5;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0d47a1;
+    }
+
+    @media (max-width: 1000px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .photo-box {
+        max-width: 90%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .photo-box img {
+        width: 45%;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Home Button Bar -->
+  <div class="top-bar">
+    <a class="home-button" href="travel.html">Home</a>
+  </div>
+
+  <div class="container">
+    <!-- Left Images -->
+    <div class="photo-box">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Travel Left Top" />
+      <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98" alt="Travel Left Bottom" />
+    </div>
+
+    <!-- Trivia Game -->
+    <div class="question-container">
+      <h1>Travel Trivia Game</h1>
+      <p id="question" class="question"></p>
+      <div id="options" class="options"></div>
+      <p id="feedback" class="feedback"></p>
+      <div id="status" class="footer">
+        <p>Question <span id="current-question">1</span> of 10</p>
+        <p>You have answered <span id="correct-answers">0</span> questions correctly.</p>
+      </div>
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Right Images -->
+    <div class="photo-box">
+      <img src="https://media.istockphoto.com/id/162556028/photo/long-view-of-the-great-wall-of-china-at-sunset.jpg?s=612x612&w=0&k=20&c=wmlG8ANu3oPsN-5x-_4CooaBNM1Z4GmKv5Qwk3_xy5Q=" alt="Travel Right Top" />
+      <img src="https://i.etsystatic.com/10400101/r/il/8a7427/784454114/il_570xN.784454114_nuot.jpg" alt="Travel Right Bottom" />
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      { question: "Which country is the Eiffel Tower located in?", options: ["Germany", "France", "Spain", "Italy"], answer: "France" },
+      { question: "What is the capital of Japan?", options: ["Seoul", "Beijing", "Bangkok", "Tokyo"], answer: "Tokyo" },
+      { question: "Which country is known for the Great Wall?", options: ["China", "India", "Egypt", "Peru"], answer: "China" },
+      { question: "Which city is famous for its canals?", options: ["Venice", "London", "Berlin", "Paris"], answer: "Venice" },
+      { question: "In which country can you visit the Colosseum?", options: ["Greece", "Italy", "Turkey", "Egypt"], answer: "Italy" },
+      { question: "What is the largest country by area?", options: ["China", "United States", "Russia", "Canada"], answer: "Russia" },
+      { question: "Which country is home to the Great Barrier Reef?", options: ["South Africa", "Australia", "New Zealand", "Thailand"], answer: "Australia" },
+      { question: "Which country is known for sushi?", options: ["Japan", "Korea", "Vietnam", "China"], answer: "Japan" },
+      { question: "Where is the Taj Mahal located?", options: ["Pakistan", "India", "Bangladesh", "Nepal"], answer: "India" },
+      { question: "Which country has the most pyramids?", options: ["Mexico", "Sudan", "Egypt", "Peru"], answer: "Sudan" }
+    ];
+
+    let currentQuestionIndex = 0;
+    let correctAnswers = 0;
+
+    function loadQuestion() {
+      const q = questions[currentQuestionIndex];
+      document.getElementById("question").textContent = q.question;
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+      q.options.forEach(option => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.onclick = () => checkAnswer(option);
+        optionsContainer.appendChild(button);
+      });
+      document.getElementById("current-question").textContent = currentQuestionIndex + 1;
+      updateProgressBar();
+    }
+
+    function checkAnswer(selected) {
+      const correct = questions[currentQuestionIndex].answer;
+      const feedback = document.getElementById("feedback");
+
+      if (selected === correct) {
+        feedback.textContent = "Good Job!";
+        feedback.className = "feedback";
+        correctAnswers++;
+      } else {
+        feedback.textContent = `Oops! The correct answer was ${correct}.`;
+        feedback.className = "feedback error";
+      }
+
+      document.getElementById("correct-answers").textContent = correctAnswers;
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex < questions.length) {
+        setTimeout(() => {
+          feedback.textContent = "";
+          loadQuestion();
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          document.querySelector(".question-container").innerHTML = `
+            <h1>Game Over!</h1>
+            <p>You got ${correctAnswers} out of 10 questions correct!</p>
+            <button onclick="restartGame()">Play Again</button>
+          `;
+        }, 1000);
+      }
+    }
+
+    function updateProgressBar() {
+      const progress = (currentQuestionIndex / questions.length) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+    }
+
+    function restartGame() {
+      currentQuestionIndex = 0;
+      correctAnswers = 0;
+      location.reload();
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

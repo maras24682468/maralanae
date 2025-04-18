@@ -1,0 +1,163 @@
+/* Base Reset & Font */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+  background-color: #b0dfe9;
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: #add8e6;
+  padding: 20px;
+  text-align: center;
+  color: #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Intro */
+.intro {
+  padding: 40px 20px;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+.intro h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Destination Sections */
+.destination {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.destination h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #444;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  padding: 24px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .card-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+/* Smaller Image Styling */
+.image-container {
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.destination-image {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Text Content */
+.text-content {
+  flex: 1;
+}
+
+.text-content h3 {
+  margin-top: 0;
+  color: #222;
+  font-size: 1.4rem;
+}
+
+.text-content p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.text-content ul {
+  padding-left: 20px;
+  color: #444;
+}
+
+.image-upload {
+  margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ddd;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* Video Section Styling */
+.video-container {
+  display: flex; /* Use flexbox to center */
+  justify-content: center; /* Centers the content horizontally */
+  align-items: center; /* Centers the content vertically */
+  margin: 50px auto; /* Adds spacing around the video */
+  max-width: 800px; /* Sets a maximum width for the video container */
+  background-color: #f1f1f1; /* Optional: Adds a light background around the video */
+  border-radius: 8px; /* Optional: Adds rounded corners */
+  padding: 20px; /* Optional: Adds padding inside the video container */
+}
+
+iframe {
+  width: 100%; /* Makes the iframe responsive */
+  height: 450px; /* Set the height of the video */
+  border-radius: 8px; /* Optional: Rounds the corners of the iframe */
+}
+
+.centered-text{
+  text-align: center;
+}
+
+.tableau-container {
+  width: 60%;         /* Change this value to resize the graph */
+  margin: 0 auto;     /* This centers the graph */
+}
